@@ -1,0 +1,13 @@
+<div class="col-md-4">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      To Do
+      <a href="#" class="btn btn-success btn-sm pull-right">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </div>
+    <div class="panel-body activity-panel">
+      <app-task *ngFor="let toDo of toDoList" [task]="toDo"></app-task>
+    </div>
+  </div>
+</div>
