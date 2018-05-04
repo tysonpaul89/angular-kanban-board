@@ -2,7 +2,7 @@
   <div class="panel panel-info">
     <div class="panel-heading">
       To Do
-      <a href="#" class="btn btn-success btn-sm pull-right" (click)="showToDoForm(template)">
+      <a href="#" class="btn btn-success btn-sm pull-right" (click)="showToDoForm()">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </div>
@@ -12,37 +12,31 @@
   </div>
 </div>
 
-<!-- Create To Do modal -->
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Create To Do</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="toDoForm" (ngSubmit)="addToDo(toDoForm.value)">
-      <div class="form-group">
-        <label for="task-title">Task Title</label>
-        <input
-          type="text"
-          [formControl]="toDoForm.controls['title']"
-          class="form-control"
-          id="task-title"
-          placeholder="Enter the task title">
-        <span class="help-block">Title is required</span>
+<!-- To Do modal -->
+<div class="modal fade" bsModal #modal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-events-name" (onHidden)="modalHiddenEvent()">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Create To Do</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="form-group">
-        <label for="task-description">Task Description</label>
-        <textarea
-          class="form-control"
-          [formControl]="toDoForm.controls['description']"
-          id="task-description"
-          rows="3"
-          placeholder="Enter task description"></textarea>
+      <div class="modal-body">
+        <form [formGroup]="toDoForm" (ngSubmit)="addToDo(toDoForm.value)">
+          <div class="form-group">
+            <label for="task-title">Task Title</label>
+            <input type="text" [formControl]="toDoForm.controls['title']" class="form-control" id="task-title" placeholder="Enter the task title">
+            <span class="help-block">Title is required</span>
+          </div>
+          <div class="form-group">
+            <label for="task-description">Task Description</label>
+            <textarea class="form-control" [formControl]="toDoForm.controls['description']" id="task-description" rows="3" placeholder="Enter task description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+    </div>
   </div>
-</ng-template>
-<!-- /.Create To Do modal -->
+</div>
+<!-- /.To Do modal -->
