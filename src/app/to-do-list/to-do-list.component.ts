@@ -32,7 +32,7 @@ export class ToDoListComponent implements OnInit {
   }
 
   /**
-   * Bootstrap modal event handler
+   * Bootstrap modal hidden event handler
    */
   modalHiddenEvent() {
     // Resetting form elements
@@ -43,7 +43,7 @@ export class ToDoListComponent implements OnInit {
    * To Add a new to do list
    */
   addToDo(form: { title: string, description: string}) {
-    this.toDoList.push(new Task(form.title, form.description, TaskStatus.ToDo));
+    this.toDoList.push(new Task(Date.now(), form.title, form.description, TaskStatus.ToDo));
     // Hides the modal
     this.modal.hide();
   }

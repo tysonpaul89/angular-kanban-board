@@ -18,4 +18,9 @@ export class TaskComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteTask(taskId) {
+    // TODO: delete task
+    console.log(taskId);
+  }
+
 }
