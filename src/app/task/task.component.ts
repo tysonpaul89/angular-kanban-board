@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from './task.model';
 import { TaskStatus } from './TaskStatus';
 
@@ -10,6 +10,7 @@ import { TaskStatus } from './TaskStatus';
 export class TaskComponent implements OnInit {
   @Input() task: Task;
   taskStatusEnum: any;
+  @Output() delTask: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {
     this.taskStatusEnum = TaskStatus;
@@ -18,9 +19,13 @@ export class TaskComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Delete icon click event
+   * This will emit the task id to the parent component
+   * @param taskId Id of the task to delete
+   */
   deleteTask(taskId) {
-    // TODO: delete task
-    console.log(taskId);
+    this.delTask.emit(taskId);
   }
 
 }

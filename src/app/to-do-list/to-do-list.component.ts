@@ -48,6 +48,15 @@ export class ToDoListComponent implements OnInit {
     this.modal.hide();
   }
 
+  /**
+   * To delete the task
+   * @param taskId Id of the task to delete
+   */
+  deleteTask(taskId: number) {
+    const taskIndex: number = this.toDoList.findIndex(task => task.taskId === taskId);
+    this.toDoList.splice(taskIndex, 1);
+  }
+
   ngOnInit() {
   }
 
